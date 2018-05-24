@@ -13,35 +13,20 @@ import java.util.List;
  * @since : 5/24/18 : 7:24 AM
  */
 
-public final class KeyValueStore implements IKeyValueStore
+final class KVStoreCore
 {
     private MapDao mapDao = null;
-    private static KeyValueStore instance;
 
-    private KeyValueStore(IDBSession dbSession)
+    public KVStoreCore()
     {
-        mapDao = dbSession.getSession().getMapDao();
+        throw new RuntimeException("Need context to function!");
     }
 
-    public static void createInstance(Context context)
+    public KVStoreCore(Context context)
     {
-        if (instance == null)
-        {
-            instance = new KeyValueStore(DBSession.getInstance(context));
-        }
+        mapDao = DBSession.getInstance(context).getSession().getMapDao();
     }
 
-    public static KeyValueStore getInstance()
-    {
-        if (instance == null)
-        {
-            throw new RuntimeException("No instance found, please call createInstance(Context context) first!");
-        }
-
-        return instance;
-    }
-
-    @Override
     public boolean put(final String key, final String value)
     {
         try
@@ -55,7 +40,6 @@ public final class KeyValueStore implements IKeyValueStore
         }
     }
 
-    @Override
     public boolean remove(final String key)
     {
         try
@@ -69,7 +53,6 @@ public final class KeyValueStore implements IKeyValueStore
         }
     }
 
-    @Override
     public String get(final String key)
     {
         try
@@ -82,7 +65,6 @@ public final class KeyValueStore implements IKeyValueStore
         }
     }
 
-    @Override
     public HashMap<String, String> getAll()
     {
         try
@@ -109,7 +91,6 @@ public final class KeyValueStore implements IKeyValueStore
         return null;
     }
 
-    @Override
     public boolean removeAll()
     {
         try
@@ -123,7 +104,6 @@ public final class KeyValueStore implements IKeyValueStore
         }
     }
 
-    @Override
     public boolean batchInsert(ArrayList<Map> entities)
     {
         try
@@ -138,7 +118,6 @@ public final class KeyValueStore implements IKeyValueStore
         }
     }
 
-    @Override
     public boolean batchDelete(ArrayList<String> keys)
     {
         try

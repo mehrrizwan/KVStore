@@ -1,1 +1,1 @@
-include ':app', ':keyvaluestore'
+include ':app', ':kvstore'

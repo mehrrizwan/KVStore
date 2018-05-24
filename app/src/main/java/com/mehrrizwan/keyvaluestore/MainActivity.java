@@ -1,10 +1,10 @@
 package com.mehrrizwan.keyvaluestore;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.mehrrizwan.lib.keyvaluestore.greendao.KeyValueStore;
+import com.mehrrizwan.lib.keyvaluestore.greendao.KVStore;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        KeyValueStore.createInstance(this);
-        KeyValueStore.getInstance().put("testkey", "testvalue");
-        Log.d("KeyValueStore", KeyValueStore.getInstance().get("testkey"));
+        KVStore.initialize(this);
+        KVStore.put("testkey", "testvalue");
+        Log.d("KeyValueStore", KVStore.getString("testkey"));
 
     }
 }
