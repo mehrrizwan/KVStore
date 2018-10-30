@@ -60,6 +60,18 @@ public class KVStore
         }
     }
 
+    public static void putDouble(String name, double value)
+    {
+        try
+        {
+            putInternal(name, Double.toString(value));
+        }
+        catch (Exception e)
+        {
+            Log.w("KV Store", e);
+        }
+    }
+
     public static void putBoolean(String name, Boolean value)
     {
         try
@@ -247,6 +259,25 @@ public class KVStore
         {
             Log.w("KV Store", e);
         }
+
+        return 0;
+    }
+
+    public static double getDouble(String key)
+    {
+        try
+        {
+            if(key == null)
+                return 0;
+
+            String value = _allValuesMap.get(key);
+            if (null != value)
+                return Double.valueOf(value);
+        }
+        catch (Exception e)
+        {
+            Log.w("KV Store", e);
+        } 
 
         return 0;
     }
