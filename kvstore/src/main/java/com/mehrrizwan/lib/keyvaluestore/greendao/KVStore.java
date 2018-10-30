@@ -277,7 +277,7 @@ public class KVStore
         catch (Exception e)
         {
             Log.w("KV Store", e);
-        } 
+        }
 
         return 0;
     }
