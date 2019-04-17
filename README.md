@@ -1,16 +1,11 @@
-#KVStore
-
 A green dao based key value pair store.
 
-Table of Contents
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
 
-- Introduction
-- Features
-
-Introduction
-
+## Introduction
 {intro}
-
 - a
 - a
 - a
@@ -31,7 +26,5 @@ Introduction
 - a
 - a
 - a 
-
-Features
-
+## Features
 {features list}
